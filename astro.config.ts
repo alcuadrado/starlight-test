@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightSidebarTopics from "starlight-sidebar-topics";
 
 export default defineConfig({
   site: "https://hardhat.org",
@@ -29,20 +30,63 @@ export default defineConfig({
           href: "https://hardhat.org/discord",
         },
       ],
-      sidebar: [
-        {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
-            { slug: "guides/foo" },
-          ],
-        },
-        {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
-          collapsed: true,
-        },
+      plugins: [
+        starlightSidebarTopics([
+          {
+            label: "Hardhat 3",
+            id: "hardhat",
+            link: "/docs/getting-started/",
+            items: [
+              { slug: "docs/getting-started" },
+              {
+                label: "Learn more",
+                autogenerate: {
+                  directory: "docs/guides",
+                  collapsed: true,
+                },
+              },
+              {
+                label: "Migrate to Hardhat 3",
+                items: [
+                  {
+                    label: "From Hardhat 2",
+                    link: "http://localhost:4321/docs/migrate-from-hardhat2/",
+                  },
+                ],
+              },
+              {
+                label: "Reference",
+                autogenerate: {
+                  directory: "docs/reference",
+                  collapsed: true,
+                },
+              },
+            ],
+          },
+          {
+            label: "Migrate from Hardhat 2",
+            id: "migrate-from-hardhat2",
+            link: "/docs/migrate-from-hardhat2/",
+            items: [
+              "docs/migrate-from-hardhat2",
+              "docs/migrate-from-hardhat2/mocha-tests",
+            ],
+          },
+          {
+            label: "Hardhat Ignition",
+            id: "ignition",
+            link: "/ignition/",
+            items: [
+              { label: "Overview", slug: "ignition" },
+              {
+                label: "Guides",
+                autogenerate: {
+                  directory: "ignition/guides",
+                },
+              },
+            ],
+          },
+        ]),
       ],
       customCss: ["./src/styles/custom-starlight-theme.css"],
     }),
