@@ -1,0 +1,65 @@
+---
+import ThemeButton from "../components/ThemeButton.astro";
+
+const title = "Hardhat";
+const description = "Hardhat's description";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <style>
+      /* Minimal theming example using data-theme */
+      :root {
+        --bg: #ffffff;
+        --fg: #0c0c0c;
+      }
+      html[data-theme="dark"] {
+        --bg: #0b0b0e;
+        --fg: #e7e7ea;
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        margin: 0;
+        font:
+          500 16px/1.5 system-ui,
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hardhat</h1>
+    <p>
+      This page is almost fully independent from the docs site, so we can
+      implement the landing here however we want.
+    </p>
+
+    <h2>Synchronized theme selection</h2>
+    <p>
+      The only thing to keep in sync is the theme selection, otherwise it would
+      be annoying to have two settings. I prototyped an implementation of this,
+      which is functional but not styled.
+    </p>
+    <ThemeButton size={22} />
+    <h2>Docs site</h2>
+    <p>
+      Just a link to navigate to the docs site:
+      <a href="/guides/example">Example guide</a>
+    </p>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -1,0 +1,33 @@
+/* DARK MODE */
+:root {
+  --sl-color-accent-low:  #3A3700;  /* subtle accent bg (chips, callouts) */
+  --sl-color-accent:      #FFF100;  /* main link color on dark (very bright) */
+  --sl-color-accent-high: #FFF44B;  /* hover/active highlight on dark */
+
+  /* Surface & text ladder */
+  --sl-color-white: #FFFFFF;
+  --sl-color-gray-1: #C6C8CC; /* primary text */
+  --sl-color-gray-2: #ADB0B6; /* secondary text */
+  --sl-color-gray-3: #95989E; /* muted text */
+  --sl-color-gray-4: #3B3F46; /* borders / subtle dividers */
+  --sl-color-gray-5: #24272D; /* card/raised surfaces */
+  --sl-color-gray-6: #1B1E24; /* navbar/sidebar bg */
+  --sl-color-black: #181A1F;  /* page background */
+}
+
+/* LIGHT MODE */
+:root[data-theme='light'] {
+  --sl-color-accent-low:  #FFF8AD;  
+  --sl-color-accent:      #CCB200;  
+  --sl-color-accent-high: #B29C00;  
+
+  --sl-color-white: #181A1F;  /* semantic "white" for contrasts in light mode */
+  --sl-color-gray-1: #16181D;
+  --sl-color-gray-2: #2B2E35;
+  --sl-color-gray-3: #464A52;
+  --sl-color-gray-4: #666B75;
+  --sl-color-gray-5: #8C9099;
+  --sl-color-gray-6: #C9CCD2;
+  --sl-color-gray-7: #F2F3F5;
+  --sl-color-black: #F0F0F0;
+}

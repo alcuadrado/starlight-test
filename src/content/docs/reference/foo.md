@@ -1,5 +1,5 @@
 ---
-title: Example Reference
+title: Foo reference
 description: A reference page in my new Starlight docs site.
 ---
 
@@ -9,4 +9,3 @@ Less concerned with telling a story or addressing a specific use case, they shou
 ## Further reading
 
 - Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
-  <hola>
