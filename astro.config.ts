@@ -89,6 +89,10 @@ export default defineConfig({
         ]),
       ],
       customCss: ["./src/styles/custom-starlight-theme.css"],
+      components: {
+        // Override the default `Sidebar` component with a custom one.
+        Sidebar: "./src/components/Sidebar.astro",
+      },
     }),
   ],
 });
