@@ -1,6 +1,13 @@
-<button id="theme-btn" aria-label="Toggle theme" title="Toggle theme">
-  <span id="theme-icon" aria-hidden="true" style="display:inline-flex"></span>
-  <span id="theme-label" style="font-size:.875rem;opacity:.8"></span>
+<button id="theme-btn" aria-label="Toggle theme">
+  <span id="theme-label"></span>
+  <span class="icon-wrapper">
+    <img src="/images/theme-switcher.svg" alt="theme-switcher" class="light" />
+    <img
+      src="/images/theme-switcher-dark.svg"
+      alt="theme-switcher"
+      class="dark"
+    />
+  </span>
 </button>
 
 <script is:inline>
@@ -22,54 +29,31 @@
     localStorage?.setItem(KEY, pref);
   };
 
-  // Applied theme is what the CSS should see; preference can be 'auto'
   const applyTheme = (pref) => {
     const html = document.documentElement;
     const applied = pref === "auto" ? (prefersDark() ? "dark" : "light") : pref;
     html.setAttribute("data-theme", applied);
-    html.setAttribute("data-theme-preference", pref); // handy for styling/icons
+    html.setAttribute("data-theme-preference", pref);
     updateButton(pref);
   };
 
-  const icons = {
-    auto: (size) => `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#CCCCCC">
-        <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" stroke-width="1.5"/>
-      </svg>`,
-    light: (size) => `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#CCCCCC">
-        <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
-        <path d="M12 2v2m0 16v2M4 12H2m20 0h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M5 19l1.5-1.5" stroke-width="1.5"/>
-      </svg>`,
-    dark: (size) => `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#CCCCCC">
-        <path d="M20 12.5A8 8 0 1 1 11.5 4 6.5 6.5 0 0 0 20 12.5Z" stroke-width="1.5"/>
-      </svg>`,
-  };
-
   const updateButton = (pref) => {
-    console.log("Update button", pref);
-    const icon = document.getElementById("theme-icon");
     const label = document.getElementById("theme-label");
-    icon.innerHTML = icons[pref](28);
-    label.textContent = pref[0].toUpperCase() + pref.slice(1);
+    label.textContent = pref === "auto" ? "A" : "";
   };
 
   const nextPref = (pref) =>
     pref === "auto" ? "light" : pref === "light" ? "dark" : "auto";
 
-  // --- Init -----------------------------------------------------------------
   let pref = getStoredPref();
   applyTheme(pref);
 
-  // Keep in sync with system if preference is 'auto'
   let mql = window.matchMedia("(prefers-color-scheme: dark)");
   const mqlHandler = () => {
     if (pref === "auto") applyTheme(pref);
   };
   mql.addEventListener?.("change", mqlHandler);
 
-  // Keep in sync with other pages / Starlight’s built-in picker
   window.addEventListener("storage", (e) => {
     if (e.key === KEY && e.newValue && e.newValue !== pref) {
       pref = e.newValue;
@@ -84,14 +68,48 @@
   });
 </script>
 
-<style>
-  button {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid var(currentColor);
-    border-radius: 0.75rem;
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    font: inherit;
-  }
+<style lang="sass">
+  @use '../styles/mixins' as *
+
+  button
+    font-size: 15px
+    line-height: 13px
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    background-color: transparent
+    color: var(--hh-gray6)
+    border: none
+    gap: 8px
+    cursor: pointer
+    transform-origin: center
+    min-width: 56px
+    height: 50px
+    font-family: var(--font-code)
+    font-size: 18px
+    transition: transform ease-in-out 0.25s
+
+    &:hover
+      opacity: 0.8
+
+    +dark
+      color: var(--hh-gray1)
+
+  .icon-wrapper
+    transition: transform ease-in-out 0.25s
+
+    img
+      display: none
+      width: 30px
+      height: 30px
+
+    .light
+      display: inline
+
+    +dark
+      .light
+        display: none
+
+      .dark
+        display: inline
 </style>

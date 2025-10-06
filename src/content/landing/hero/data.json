@@ -1,0 +1,12 @@
+{
+  "title": "Ethereum development environment for professionals",
+  "tagline": "<strong>Hardhat 3:</strong> Rust-powered Solidity tests",
+  "cta": {
+    "title": "Get started",
+    "url": "/docs/getting-started"
+  },
+  "block": {
+    "title": "Ready to use out of the box",
+    "text": "Hardhat includes everything you need for Solidity smart contract development. Testing, deployment, code coverage, code verification, and more."
+  }
+}

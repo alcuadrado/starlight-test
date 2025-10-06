@@ -1,0 +1,130 @@
+---
+const { href, variant = "", disabled = false, class: className = "" } = Astro.props;
+const classes = `cta ${variant} ${className}`.trim();
+---
+
+{
+  href ? (
+    <a href={href} class={classes}>
+      <slot />
+    </a>
+  ) : (
+    <button class={classes} disabled={disabled}>
+      <slot />
+    </button>
+  )
+}
+
+<style lang="sass" is:global>
+  @use '../../styles/mixins' as *
+
+  .cta
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    gap: 12px
+    padding: 0 28px
+    border: none
+    height: 44px
+    border-radius: 0
+    width: fit-content
+    font-size: 12px
+    font-weight: 600
+    line-height: 1
+    font-family: var(--font-base)
+    letter-spacing: 0.03em
+    white-space: nowrap
+    text-align: center
+    color: var(--hh-gray8b)
+    background-color: var(--hh-accent800)
+    transition: all ease-out 0.3s
+    cursor: pointer
+    text-decoration: none
+    +dark-global
+      background-color: var(--hh-accent800)
+      color: var(--hh-gray9)
+
+    &:hover
+      background-color: var(--hh-gray8b)
+      text-decoration: none
+      color: var(--hh-accent800)
+
+      +dark-global
+        background-color: var(--hh-neutral200)
+        color: var(--hh-gray9)
+
+    &:active
+      background-color: var(--hh-gray7)
+      color: var(--hh-accent800)
+
+      +dark-global
+        background-color: var(--hh-yellow200)
+        color: var(--hh-gray9)
+
+    &.secondary
+      width: 100%
+      border: 1px solid var(--hh-gray5)
+      text-align: center
+      background-color: transparent
+      transition: 0.3s
+      outline: 1px solid transparent
+      color: var(--hh-gray8b)
+
+      +dark-global
+        color: var(--hh-gray4)
+        border-color: var(--hh-gray5)
+        background-color: transparent
+
+      &:hover,
+      &:active
+        border-color: var(--hh-gray8b)
+        color: var(--hh-gray8b)
+        outline: 1px solid var(--hh-gray8b)
+        background-color: transparent
+
+        +dark-global
+          color: var(--hh-gray2)
+          background-color: transparent
+          border-color: var(--hh-gray5)
+          outline: 1px solid var(--hh-gray5)
+
+      &:active
+        border-color: var(--hh-gray5)
+        outline: 1px solid var(--hh-gray5)
+
+    &.primary
+      background-color: var(--hh-gray2)
+      border: none
+      color: var(--hh-gray8b)
+      +dark-global
+        color: var(--hh-gray4)
+        background-color: var(--hh-gray3a)
+
+      .icon
+        color: var(--hh-accent700)
+
+      &:hover
+        background-color: var(--hh-violet500)
+        color: var(--hh-gray1)
+
+        .icon
+          color: var(--hh-gray3)
+
+    &.sm
+      height: 36px
+
+    &.lg
+      height: 56px
+      font-size: 14px
+
+    &.xl
+      height: 64px
+      font-size: 16px
+
+    &.full-padding
+      padding: 0 28px
+
+    &:disabled
+      opacity: 0.6
+      cursor: not-allowed
+</style>

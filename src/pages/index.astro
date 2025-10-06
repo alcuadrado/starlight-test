@@ -1,65 +1,111 @@
 ---
-import ThemeButton from "../components/ThemeButton.astro";
+import "../styles/global.css";
+import Banner from "../components/Banner/Banner.astro";
+import LandingHeader from "../components/LandingHeader/LandingHeader.astro";
+import HeroBlock from "../components/HeroBlock/HeroBlock.astro";
+import HardhatNews from "../components/HardhatNews/HardhatNews.astro";
+import WhatIsNewBlock from "../components/WhatIsNewBlock/WhatIsNewBlock.astro";
+import EmailForm from "../components/EmailForm/EmailForm.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhyHardhat from "../components/WhyHardhat/WhyHardhat.astro";
+import CookiePopup from "../components/CookiePopup/CookiePopup.astro";
+import { getEntry } from "astro:content";
+import { getHardhatReleases } from "../lib/getHardhatReleases";
+import { getPosts } from "../lib/getPosts";
+import { landing } from "../config";
 
-const title = "Hardhat";
-const description = "Hardhat's description";
+const title =
+  "Hardhat | Ethereum development environment for professionals by Nomic Foundation";
+const description =
+  "Hardhat is an Ethereum development environment. Compile your contracts and run them on a development network. Get Solidity stack traces, console.log and more.";
+const canonicalUrl = "https://hardhat.org";
+
+const heroData = await getEntry("landing/hero", "data");
+const whyHardhatData = await getEntry("landing/why-hardhat", "data");
+
+if (!heroData) {
+  throw new Error("Hero data not found in landing/hero collection");
+}
+
+if (!whyHardhatData) {
+  throw new Error(
+    "WhyHardhat data not found in landing/why-hardhat collection"
+  );
+}
+
+// Fetch data from external APIs
+const releases = await getHardhatReleases();
+const posts = await getPosts();
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <style>
-      /* Minimal theming example using data-theme */
-      :root {
-        --bg: #ffffff;
-        --fg: #0c0c0c;
-      }
-      html[data-theme="dark"] {
-        --bg: #0b0b0e;
-        --fg: #e7e7ea;
-      }
-      body {
-        background: var(--bg);
-        color: var(--fg);
-        margin: 0;
-        font:
-          500 16px/1.5 system-ui,
-          sans-serif;
-      }
-    </style>
+
+    <meta property="og:url" content="https://hardhat.org" />
+    <meta property="og:image" content="/thumbnail.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Preload Fonts -->
+    <link
+      rel="preload"
+      href="/fonts/Roboto-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Roboto-SemiBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Roboto-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/SourceCodePro-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/SourceCodePro-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <body>
-    <h1>Hardhat</h1>
-    <p>
-      This page is almost fully independent from the docs site, so we can
-      implement the landing here however we want.
-    </p>
+    <Banner />
+    <LandingHeader />
 
-    <h2>Synchronized theme selection</h2>
-    <p>
-      The only thing to keep in sync is the theme selection, otherwise it would
-      be annoying to have two settings. I prototyped an implementation of this,
-      which is functional but not styled.
-    </p>
-    <ThemeButton size={22} />
-    <h2>Docs site</h2>
-    <p>
-      Just a link to navigate to the docs site:
-      <a href="/docs/getting-started">Getting started</a>
-    </p>
+    <main class="main">
+      <HeroBlock content={heroData.data} />
+      <WhyHardhat content={whyHardhatData.data} />
+      <WhatIsNewBlock content={{ title: landing.whatIsNew.title, releases }} />
+      <HardhatNews content={{ title: landing.hardhatNews.title, posts }} />
+      <EmailForm content={{ title: landing.emailForm.title }} />
+    </main>
+    <Footer content={landing.footer} />
+    <CookiePopup content={landing.cookiePopup} />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>

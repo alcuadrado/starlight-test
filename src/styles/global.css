@@ -1,0 +1,161 @@
+/* Fonts */
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("/fonts/Roboto-SemiBold.woff2") format("woff2"),
+    url("/fonts/Roboto-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("/fonts/Roboto-Bold.woff2") format("woff2"),
+    url("/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src:
+    url("/fonts/SourceCodePro-Regular.woff2") format("woff2"),
+    url("/fonts/SourceCodePro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src:
+    url("/fonts/SourceCodePro-Medium.woff2") format("woff2"),
+    url("/fonts/SourceCodePro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src:
+    url("/fonts/SourceCodePro-SemiBold.woff2") format("woff2"),
+    url("/fonts/SourceCodePro-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src:
+    url("/fonts/SourceCodePro-Bold.woff2") format("woff2"),
+    url("/fonts/SourceCodePro-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Neutral */
+  --hh-neutral0: #ffffff;
+  --hh-neutral100: #f2f2f2;
+  --hh-neutral200: #fcfcf1;
+  --hh-neutral400: #c4c4c4;
+  --hh-neutral500: #4b4d4d;
+  --hh-neutral600: #6e6f70;
+  --hh-neutral700: #9b9fa8;
+  --hh-neutral800: #16181d;
+  --hh-neutral900: #0a0a0a;
+
+  /* Grays */
+  --hh-gray0: #ededee;
+  --hh-gray1: #fbfbfb;
+  --hh-gray2: #e5e6e7;
+  --hh-gray2a: #c7cbd1;
+  --hh-gray3: #d2d3d5;
+  --hh-gray3a: #333538;
+  --hh-gray4: #b0b2b5;
+  --hh-gray5: #8e9094;
+  --hh-gray6: #6c6f74;
+  --hh-gray7: #4a4d54;
+  --hh-gray8: #282b33;
+  --hh-gray8a: #20232a;
+  --hh-gray8aa: #202329;
+  --hh-gray8b: #181a1f;
+  --hh-gray8c: #1c1f23;
+  --hh-gray9: #16181d;
+  --hh-gray10: #0e0f12;
+
+  /* Yellow/Accent */
+  --hh-accent100: #fbfcdb;
+  --hh-accent200: #f8f6e2;
+  --hh-accent300: #fff787;
+  --hh-accent600: #fff04d;
+  --hh-accent700: #ccb200;
+  --hh-accent800: #fff100;
+  --hh-accent900: #edcf00;
+  --hh-yellow100: #fffeeb;
+  --hh-yellow200: #f8ecb4;
+  --hh-yellow900: #b29c00;
+
+  /* Violet */
+  --hh-violet50: #f5f5ff;
+  --hh-violet500: #5e21ff;
+
+  /* Cookie Popup */
+  --hh-cookie-bg: #fbfbfb;
+  --hh-cookie-text: #4a4d54;
+  --hh-cookie-shadow: rgba(210, 211, 213, 0.5);
+  --hh-cookie-bg-dark: #16181d;
+  --hh-cookie-text-dark: #b0b2b5;
+  --hh-cookie-shadow-dark: rgba(74, 77, 84, 0.5);
+
+  /* Fonts */
+  --font-base:
+    "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: "Source Code Pro", "Monaco", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  font-family: var(--font-base);
+  background-color: var(--hh-neutral0);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  min-height: 100%;
+}
+
+[data-theme="dark"] body,
+[data-theme="dark"] html {
+  background-color: var(--hh-gray8b);
+}
+@media (max-width: 1200px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+.main {
+  overflow-x: clip;
+}
