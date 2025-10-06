@@ -1,15 +1,15 @@
 ---
-const { href, variant = "", disabled = false, class: className = "" } = Astro.props;
+const { href, variant = "", disabled = false, class: className = "", ...rest } = Astro.props;
 const classes = `cta ${variant} ${className}`.trim();
 ---
 
 {
   href ? (
-    <a href={href} class={classes}>
+    <a href={href} class={classes} {...rest}>
       <slot />
     </a>
   ) : (
-    <button class={classes} disabled={disabled}>
+    <button class={classes} disabled={disabled} {...rest}>
       <slot />
     </button>
   )

@@ -4,7 +4,7 @@ import Button from "../ui/Button.astro";
 const { content } = Astro.props;
 ---
 
-<div class="cookie-popup" id="cookie-popup">
+<div class="cookie-popup hidden" id="cookie-popup">
   <h3 class="title">{content.title}</h3>
   <p class="text">
     {content.text}
@@ -13,11 +13,34 @@ const { content } = Astro.props;
     >
   </p>
   <div class="buttons">
-    <Button variant="secondary sm" class="cookie-button">Reject all</Button>
-
-    <Button variant="sm" class="cookie-button">Accept all</Button>
+    <Button variant="secondary sm" id="cookie-reject">Reject all</Button>
+    <Button variant="sm" id="cookie-accept">Accept all</Button>
   </div>
 </div>
+
+<script>
+  const COOKIE_CONSENT_KEY = "cookie-consent";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("cookie-popup");
+    const acceptButton = document.getElementById("cookie-accept");
+    const rejectButton = document.getElementById("cookie-reject");
+
+    // Show popup if user hasn't made a choice
+    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+    if (!consent) {
+      popup?.classList.remove("hidden");
+    }
+
+    const handleChoice = (accepted: boolean) => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, accepted ? "accepted" : "rejected");
+      popup?.classList.add("hidden");
+    };
+
+    acceptButton?.addEventListener("click", () => handleChoice(true));
+    rejectButton?.addEventListener("click", () => handleChoice(false));
+  });
+</script>
 
 <style lang="sass">
   @use '../../styles/mixins' as *
