@@ -22,9 +22,12 @@ const githubReleaseCollectionSchema = z.object({
 
 export const githubReleasesCollection = defineCollection({
   loader: async () => {
-    const response = await fetch(
-      "https://api.github.com/repos/NomicFoundation/hardhat/releases",
-    );
+    const endpoint =
+      "https://api.github.com/repos/NomicFoundation/hardhat/releases";
+
+    console.log("Fetching from GitHub releases endpoint:", endpoint);
+
+    const response = await fetch(endpoint);
 
     if (!response.ok) {
       console.error(

@@ -27,6 +27,8 @@ export const blogpostsCollection = defineCollection({
       : CONTENT_URL;
     const endpoint = `${baseUrl}/ghost/api/content/posts?key=${API_KEY}&filter=tag:[hardhat,hardhat-ignition]`;
 
+    console.log("Fetching from Ghost CMS post from endpoint:", endpoint);
+
     const response = await fetch(endpoint);
 
     if (!response.ok) {
