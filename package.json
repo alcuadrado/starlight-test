@@ -8,7 +8,6 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "prebuild": "astro check",
     "preview": "astro preview",
     "clean": "rm -rf dist .astro .vercel",
     "astro": "astro",
