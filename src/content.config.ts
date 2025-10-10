@@ -66,6 +66,6 @@ const whyHardhatCollection = defineCollection({
 
 export const collections = {
   docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
-  "hero": heroCollection,
+  hero: heroCollection,
   "why-hardhat": whyHardhatCollection,
 };
