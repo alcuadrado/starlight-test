@@ -10,8 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "prettier --check 'src/**/*.{js,ts,md,json,mdx,astro}'",
-    "lint:fix": "prettier --write 'src/**/*.{js,ts,md,json,mdx,astro}'"
+    "lint": "prettier --check '{src/**,.}/*.{js,ts,md,json,mdx,astro}' ",
+    "lint:fix": "prettier --write '{src/**,.}/*.{js,ts,md,json,mdx,astro}'"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.36.0",
