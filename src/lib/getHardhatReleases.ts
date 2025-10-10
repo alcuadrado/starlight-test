@@ -7,7 +7,7 @@ interface GitHubRelease {
 
 export async function getHardhatReleases() {
   const response = await fetch(
-    "https://api.github.com/repos/NomicFoundation/hardhat/releases"
+    "https://api.github.com/repos/NomicFoundation/hardhat/releases",
   );
 
   if (!response.ok) {
@@ -20,7 +20,7 @@ export async function getHardhatReleases() {
 
     if (!bodyText) {
       throw Error(
-        `Extracting description text from release failed:\n${release.body}`
+        `Extracting description text from release failed:\n${release.body}`,
       );
     }
 

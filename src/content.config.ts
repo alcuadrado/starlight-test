@@ -59,7 +59,7 @@ const whyHardhatCollection = defineCollection({
             title: z.string(),
           }),
         }),
-      })
+      }),
     ),
   }),
 });

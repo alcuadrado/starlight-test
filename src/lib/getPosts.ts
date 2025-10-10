@@ -16,14 +16,21 @@ export async function getPosts(): Promise<GhostPost[]> {
 
   try {
     // Ensure URL has the correct API path
-    const baseUrl = CONTENT_URL.endsWith('/') ? CONTENT_URL.slice(0, -1) : CONTENT_URL;
+    const baseUrl = CONTENT_URL.endsWith("/")
+      ? CONTENT_URL.slice(0, -1)
+      : CONTENT_URL;
     const endpoint = `${baseUrl}/ghost/api/content/posts?key=${API_KEY}&filter=tag:[hardhat,hardhat-ignition]`;
-    console.log("Fetching from Ghost CMS endpoint:", endpoint.replace(API_KEY, "***"));
+    console.log(
+      "Fetching from Ghost CMS endpoint:",
+      endpoint.replace(API_KEY, "***"),
+    );
 
     const response = await fetch(endpoint);
 
     if (!response.ok) {
-      console.error(`Ghost CMS API error: ${response.status} ${response.statusText}`);
+      console.error(
+        `Ghost CMS API error: ${response.status} ${response.statusText}`,
+      );
       const text = await response.text();
       console.error("Response body:", text);
       throw new Error(`HTTP error! Status: ${response.status}`);

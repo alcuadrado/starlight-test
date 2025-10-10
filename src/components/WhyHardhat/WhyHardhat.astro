@@ -141,7 +141,7 @@ const { content } = Astro.props;
 
       imageWrappers.forEach((wrapper) => {
         const wrapperIndex = parseInt(
-          wrapper.getAttribute("data-image-index") || "0"
+          wrapper.getAttribute("data-image-index") || "0",
         );
         if (wrapperIndex === index) {
           wrapper.classList.add("active");

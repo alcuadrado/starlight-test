@@ -419,7 +419,8 @@ const { logo, menu, socials } = landing.header;
 
     document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
-      const clickedOutside = !nav?.contains(target) && !hamburger?.contains(target);
+      const clickedOutside =
+        !nav?.contains(target) && !hamburger?.contains(target);
 
       if (clickedOutside) closeMenu();
     });

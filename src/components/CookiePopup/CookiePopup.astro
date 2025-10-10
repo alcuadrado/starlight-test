@@ -33,7 +33,10 @@ const { content } = Astro.props;
     }
 
     const handleChoice = (accepted: boolean) => {
-      localStorage.setItem(COOKIE_CONSENT_KEY, accepted ? "accepted" : "rejected");
+      localStorage.setItem(
+        COOKIE_CONSENT_KEY,
+        accepted ? "accepted" : "rejected",
+      );
       popup?.classList.add("hidden");
     };
 
