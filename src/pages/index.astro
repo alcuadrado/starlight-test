@@ -20,16 +20,16 @@ const description =
   "Hardhat is an Ethereum development environment. Compile your contracts and run them on a development network. Get Solidity stack traces, console.log and more.";
 const canonicalUrl = "https://hardhat.org";
 
-const heroData = await getEntry("landing/hero", "data");
-const whyHardhatData = await getEntry("landing/why-hardhat", "data");
+const heroData = await getEntry("hero", "data");
+const whyHardhatData = await getEntry("why-hardhat", "data");
 
 if (!heroData) {
-  throw new Error("Hero data not found in landing/hero collection");
+  throw new Error("Hero data not found in hero collection");
 }
 
 if (!whyHardhatData) {
   throw new Error(
-    "WhyHardhat data not found in landing/why-hardhat collection",
+    "WhyHardhat data not found in why-hardhat collection",
   );
 }
 
