@@ -3,6 +3,12 @@ import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import partytown from "@astrojs/partytown";
 import vercel from "@astrojs/vercel";
+import { setGlobalDispatcher, Agent } from "undici";
+
+// We set this up to prefer IPv4 connections to IPv6 connections
+// as otherwise the Vercel deployments were failing when trying to access
+// the Ghost API
+setGlobalDispatcher(new Agent({ connect: { family: 4 } }));
 
 export default defineConfig({
   site: "https://hardhat.org/",
