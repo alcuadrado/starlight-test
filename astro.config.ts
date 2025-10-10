@@ -2,9 +2,11 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import partytown from "@astrojs/partytown";
+import vercel from "@astrojs/vercel/static";
 
 export default defineConfig({
   site: "https://hardhat.org/",
+  adapter: vercel({}),
   integrations: [
     starlight({
       title: "Hardhat 3",
@@ -101,4 +103,11 @@ export default defineConfig({
       },
     }),
   ],
+  trailingSlash: "never",
+  redirects: {
+    "/test-redirect": {
+      status: 302,
+      destination: "/docs/reference/example/index.html",
+    },
+  },
 });
