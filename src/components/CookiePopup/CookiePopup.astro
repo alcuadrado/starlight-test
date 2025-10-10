@@ -74,6 +74,7 @@ import { cookiePopup } from "../../config.js";
       console.warn(
         "No measurement ID found, so we don't display the cookie popup",
       );
+      console.warn("Make sure to define the GA_MEASUREMENT_ID env var");
       return;
     }
 

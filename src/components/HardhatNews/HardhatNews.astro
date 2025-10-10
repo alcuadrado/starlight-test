@@ -1,22 +1,21 @@
 ---
 import { getCollection } from "astro:content";
+import { landing } from "../../config";
 import Container from "../Container/Container.astro";
 
 const posts = await getCollection("blogpostsCollection");
-
-const { content } = Astro.props;
 ---
 
 <section class="section">
   <Container>
-    <h2 class="title">{content.title}</h2>
+    <h2 class="title">{landing.whatIsNew.title}</h2>
     <div class="cards-container">
       {
-        posts.map((card) => (
+        posts.map((post) => (
           <article class="card">
-            {card.data.url && (
+            {post.data.url && (
               <a
-                href={card.data.url}
+                href={post.data.url}
                 class="card-link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -24,15 +23,15 @@ const { content } = Astro.props;
             )}
             <div class="image-container">
               <img
-                src={card.data.feature_image}
-                alt={card.data.title}
+                src={post.data.feature_image}
+                alt={post.data.title}
                 class="card-image"
                 loading="lazy"
               />
             </div>
             <div class="text-container">
-              <h3 class="card-title">{card.data.title}</h3>
-              <p class="card-text">{card.data.excerpt}</p>
+              <h3 class="card-title">{post.data.title}</h3>
+              <p class="card-text">{post.data.excerpt}</p>
             </div>
           </article>
         ))

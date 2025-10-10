@@ -16,6 +16,9 @@ export const blogpostsCollection = defineCollection({
 
     if (!API_KEY || !CONTENT_URL) {
       console.warn("Ghost CMS API keys not configured, returning empty posts");
+      console.warn(
+        "Make sure to define the GHOST_CMS_API_KEY and GHOST_CMS_CONTENT_URL env vars",
+      );
       return [];
     }
 

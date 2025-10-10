@@ -1,8 +1,7 @@
 ---
 import FeatureCard from "./FeatureCard.astro";
+import { landing } from "../../config";
 import Container from "../Container/Container.astro";
-
-const { content } = Astro.props;
 ---
 
 <section class="section">
@@ -35,7 +34,7 @@ const { content } = Astro.props;
           <path d="M132.625 49.3682L176.871 49.3682"></path>
           <path d="M173.745 49.3682L217.991 49.3682"></path>
         </svg>
-        {content.title}
+        {landing.whyHardhat.title}
         <svg
           width="232"
           height="100"
@@ -57,14 +56,14 @@ const { content } = Astro.props;
 
     <div class="card-list">
       {
-        content.featureCards.map((card: any, index: number) => (
+        landing.whyHardhat.featureCards.map((card, index) => (
           <FeatureCard content={card} index={index} />
         ))
       }
 
       <div class="image-container-sticky" id="sticky-image-container">
         {
-          content.featureCards.map((card: any, index: number) => (
+          landing.whyHardhat.featureCards.map((card, index) => (
             <>
               <div
                 class={`image-wrapper-sticky light image-wrapper-${index} ${index === 0 ? "active" : ""}`}
@@ -78,7 +77,7 @@ const { content } = Astro.props;
                   />
                   <source
                     media="(min-width: 1199px)"
-                    srcset={card.imagePaths.m || card.imagePaths.lg}
+                    srcset={card.imagePaths.m}
                   />
                   <img
                     src={card.imagePaths.md}
@@ -99,7 +98,7 @@ const { content } = Astro.props;
                   />
                   <source
                     media="(min-width: 1199px)"
-                    srcset={card.imageDarkPaths.m || card.imageDarkPaths.lg}
+                    srcset={card.imageDarkPaths.m}
                   />
                   <img
                     src={card.imageDarkPaths.md}
@@ -117,8 +116,8 @@ const { content } = Astro.props;
 </section>
 <section class="generation">
   <Container>
-    <div class="generation-title">{content.footer.title}</div>
-    <div class="generation-text">{content.footer.text}</div>
+    <div class="generation-title">{landing.whyHardhat.footer.title}</div>
+    <div class="generation-text">{landing.whyHardhat.footer.text}</div>
   </Container>
 </section>
 

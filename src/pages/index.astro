@@ -9,25 +9,8 @@ import EmailForm from "../components/EmailForm/EmailForm.astro";
 import Footer from "../components/Footer/Footer.astro";
 import WhyHardhat from "../components/WhyHardhat/WhyHardhat.astro";
 import CookiePopup from "../components/CookiePopup/CookiePopup.astro";
-import { getEntry } from "astro:content";
+
 import { landing } from "../config";
-
-const title =
-  "Hardhat | Ethereum development environment for professionals by Nomic Foundation";
-const description =
-  "Hardhat is an Ethereum development environment. Compile your contracts and run them on a development network. Get Solidity stack traces, console.log and more.";
-const canonicalUrl = "https://hardhat.org";
-
-const heroData = await getEntry("hero", "data");
-const whyHardhatData = await getEntry("why-hardhat", "data");
-
-if (!heroData) {
-  throw new Error("Hero data not found in hero collection");
-}
-
-if (!whyHardhatData) {
-  throw new Error("WhyHardhat data not found in why-hardhat collection");
-}
 ---
 
 <html lang="en">
@@ -37,17 +20,17 @@ if (!whyHardhatData) {
     <link rel="icon" href="/favicon.ico" />
 
     <!-- SEO Meta Tags -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{landing.head.title}</title>
+    <meta name="description" content={landing.head.description} />
     <meta name="generator" content={Astro.generator} />
 
-    <meta property="og:url" content="https://hardhat.org" />
+    <meta property="og:url" content={landing.head.canonicalUrl} />
     <meta property="og:image" content="/thumbnail.png" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={landing.head.title} />
+    <meta property="og:description" content={landing.head.description} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href={canonicalUrl} />
+    <link rel="canonical" href={landing.head.canonicalUrl} />
 
     <!-- Preload Fonts -->
     <link
@@ -91,13 +74,13 @@ if (!whyHardhatData) {
     <LandingHeader />
 
     <main class="main">
-      <HeroBlock content={heroData.data} />
-      <WhyHardhat content={whyHardhatData.data} />
-      <WhatIsNewBlock content={{ title: landing.whatIsNew.title }} />
-      <HardhatNews content={{ title: landing.hardhatNews.title }} />
-      <EmailForm content={{ title: landing.emailForm.title }} />
+      <HeroBlock />
+      <WhyHardhat />
+      <WhatIsNewBlock />
+      <HardhatNews />
+      <EmailForm />
     </main>
-    <Footer content={landing.footer} />
+    <Footer />
     <CookiePopup />
   </body>
 </html>

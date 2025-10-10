@@ -2,9 +2,9 @@
 import { Image } from "astro:assets";
 import nomicLogo from "../../assets/nomic-foundation-logo.svg";
 import nomicLogoDark from "../../assets/nomic-foundation-logo-dark.svg";
+import { landing } from "../../config";
 import Container from "../Container/Container.astro";
 
-const { content } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -12,19 +12,19 @@ const currentYear = new Date().getFullYear();
   <Container>
     <div class="wrapper">
       <div class="supported-by">
-        <h5 class="supported-by-title">{content.builtByText}</h5>
+        <h5 class="supported-by-title">{landing.footer.builtByText}</h5>
         <div class="logo light">
-          <Image src={nomicLogo} alt={content.copyrightText} />
+          <Image src={nomicLogo} alt={landing.footer.copyrightText} />
         </div>
         <div class="logo dark">
-          <Image src={nomicLogoDark} alt={content.copyrightText} />
+          <Image src={nomicLogoDark} alt={landing.footer.copyrightText} />
         </div>
       </div>
       <h5 class="subtitle">
         Copyright {currentYear}
-        {content.copyrightText} |
-        <a href={content.privacyPolicyUrl} class="privacy-policy-link">
-          {content.privacyPolicyText}
+        {landing.footer.copyrightText} |
+        <a href={landing.footer.privacyPolicyUrl} class="privacy-policy-link">
+          {landing.footer.privacyPolicyText}
         </a>
       </h5>
     </div>

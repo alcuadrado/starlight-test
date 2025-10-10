@@ -1,7 +1,7 @@
 ---
 import Container from "../Container/Container.astro";
 
-const { content } = Astro.props;
+import { landing } from "../../config";
 ---
 
 <section class="section">
@@ -25,7 +25,7 @@ const { content } = Astro.props;
       <div class="background-image"></div>
       <div class="form-container">
         <h2 class="form-title">
-          {content.title}
+          {landing.emailForm.title}
         </h2>
         <div class="form-row">
           <div class="ghost-form-container" id="ghost-form-container"></div>

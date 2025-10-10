@@ -2,11 +2,11 @@
 import { getCollection } from "astro:content";
 
 import HardhatNewsImage from "../../assets/what-is-new/Hardhat-news.svg";
+import { landing } from "../../config";
 import { formatSmartDate } from "../../utils/formatSmartDate";
 import Container from "../Container/Container.astro";
 
 const githubReleases = await getCollection("githubReleases");
-const { content } = Astro.props;
 ---
 
 <section class="section">
@@ -27,7 +27,7 @@ const { content } = Astro.props;
       </svg>
     </div>
 
-    <h2 class="title">{content.title}</h2>
+    <h2 class="title">{landing.whatIsNew.title}</h2>
 
     <div class="list-news">
       {

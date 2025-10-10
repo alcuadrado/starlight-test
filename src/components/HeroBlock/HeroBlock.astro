@@ -8,23 +8,23 @@ import heroGraphicDesktopDark from "../../assets/hero/heroDark.webp";
 import heroGraphicDarkTablet from "../../assets/hero/heroDarkTablet.webp";
 import heroGraphicDarkMobile from "../../assets/hero/heroDarkMobile.webp";
 
-const { content } = Astro.props;
+import { landing } from "../../config";
 ---
 
 <section class="section">
   <Container>
     <div class="content">
-      <span class="tagline" set:html={content.tagline} />
-      <h1 class="title">{content.title}</h1>
-      <Button href={content.cta.url} variant="lg">
-        {content.cta.title}
+      <span class="tagline" set:html={landing.hero.tagline} />
+      <h1 class="title">{landing.hero.title}</h1>
+      <Button href={landing.hero.cta.url} variant="lg">
+        {landing.hero.cta.title}
       </Button>
     </div>
 
     <div class="block">
-      <h2 class="block-title">{content.block.title}</h2>
+      <h2 class="block-title">{landing.hero.block.title}</h2>
       <p class="block-text">
-        {content.block.text}
+        {landing.hero.block.text}
       </p>
     </div>
   </Container>
