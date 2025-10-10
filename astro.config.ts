@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
+import partytown from "@astrojs/partytown";
 
 export default defineConfig({
   site: "https://hardhat.org",
@@ -90,8 +91,13 @@ export default defineConfig({
       ],
       customCss: ["./src/styles/custom-starlight-theme.css"],
       components: {
-        // Override the default `Sidebar` component with a custom one.
         Sidebar: "./src/components/Sidebar.astro",
+        Header: "./src/components/Header.astro",
+      },
+    }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
       },
     }),
   ],
