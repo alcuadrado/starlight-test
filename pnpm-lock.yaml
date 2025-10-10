@@ -30,7 +30,7 @@ importers:
         specifier: 0.14.1
         version: 0.14.1
       prettier-plugin-solidity:
-        specifier: ^2.1.0
+        specifier: 2.1.0
         version: 2.1.0(prettier@3.6.2)
       sass:
         specifier: ^1.93.2
@@ -45,7 +45,7 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(rollup@4.52.4)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1)))(starlight-sidebar-topics@0.6.1(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(rollup@4.52.4)(sass@1.93.2)(typescript@5.9.3)(yaml@2.8.1))))
       typescript:
-        specifier: ^5.9.3
+        specifier: 5.9.3
         version: 5.9.3
 
 packages:
