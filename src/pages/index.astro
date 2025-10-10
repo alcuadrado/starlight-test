@@ -10,8 +10,6 @@ import Footer from "../components/Footer/Footer.astro";
 import WhyHardhat from "../components/WhyHardhat/WhyHardhat.astro";
 import CookiePopup from "../components/CookiePopup/CookiePopup.astro";
 import { getEntry } from "astro:content";
-import { getHardhatReleases } from "../lib/getHardhatReleases";
-import { getPosts } from "../lib/getPosts";
 import { landing } from "../config";
 
 const title =
@@ -30,10 +28,6 @@ if (!heroData) {
 if (!whyHardhatData) {
   throw new Error("WhyHardhat data not found in why-hardhat collection");
 }
-
-// Fetch data from external APIs
-const releases = await getHardhatReleases();
-const posts = await getPosts();
 ---
 
 <html lang="en">
@@ -99,8 +93,8 @@ const posts = await getPosts();
     <main class="main">
       <HeroBlock content={heroData.data} />
       <WhyHardhat content={whyHardhatData.data} />
-      <WhatIsNewBlock content={{ title: landing.whatIsNew.title, releases }} />
-      <HardhatNews content={{ title: landing.hardhatNews.title, posts }} />
+      <WhatIsNewBlock content={{ title: landing.whatIsNew.title }} />
+      <HardhatNews content={{ title: landing.hardhatNews.title }} />
       <EmailForm content={{ title: landing.emailForm.title }} />
     </main>
     <Footer content={landing.footer} />

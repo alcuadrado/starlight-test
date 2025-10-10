@@ -1,15 +1,11 @@
 ---
+import { getCollection } from "astro:content";
+
 import HardhatNewsImage from "../../assets/what-is-new/Hardhat-news.svg";
 import { formatSmartDate } from "../../utils/formatSmartDate";
 import Container from "../Container/Container.astro";
 
-interface Release {
-  tag_name: string;
-  body: string;
-  html_url: string;
-  published_at: string;
-}
-
+const githubReleases = await getCollection("githubReleases");
 const { content } = Astro.props;
 ---
 
@@ -35,29 +31,25 @@ const { content } = Astro.props;
 
     <div class="list-news">
       {
-        content.releases?.map((item: Release, index: number) => (
+        githubReleases.map((item, index: number) => (
           <article class={index === 0 ? "news first" : "news"}>
             <div class="news-header">
               {index === 0 && (
                 <div class="news-image">
-                  <img src={HardhatNewsImage.src} alt={item.tag_name} />
+                  <img src={HardhatNewsImage.src} alt={item.data.name} />
                 </div>
               )}
               <div class="news-header-inner">
                 <div class="news-date">
-                  {formatSmartDate(item.published_at)}
+                  {formatSmartDate(item.data.published_at)}
                 </div>
-                <h3 class="news-title">
-                  {item.tag_name
-                    .replace(/^.*\//, "")
-                    .replace(/@([^@]*)$/, " $1")}
-                </h3>
+                <h3 class="news-title">{item.data.name}</h3>
               </div>
             </div>
             <div class="news-content">
-              <div class="news-text">{item.body}</div>
+              <div class="news-text">{item.data.body}</div>
               <a
-                href={item.html_url}
+                href={item.data.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="news-link"
