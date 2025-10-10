@@ -1,0 +1,32 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    }
+  ],
+  "public": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*/index.html",
+      "destination": "/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/test-redirect",
+      "destination": "/docs/reference/example/index.html",
+      "permanent": false
+    }
+  ]
+}

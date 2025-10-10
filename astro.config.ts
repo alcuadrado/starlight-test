@@ -4,7 +4,7 @@ import starlightSidebarTopics from "starlight-sidebar-topics";
 import partytown from "@astrojs/partytown";
 
 export default defineConfig({
-  site: "https://hardhat.org",
+  site: "https://hardhat.org/",
   integrations: [
     starlight({
       title: "Hardhat 3",
