@@ -1,3 +1,5 @@
+@import url(./landing-vars.css);
+
 /* DARK MODE */
 :root {
   --sl-color-accent-low:  #3A3700;  /* subtle accent bg (chips, callouts) */
