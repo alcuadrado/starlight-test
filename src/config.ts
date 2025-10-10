@@ -37,10 +37,12 @@ export const landing = {
     privacyPolicyText: "Privacy Policy",
     privacyPolicyUrl: "/privacy-policy.html",
   },
-  cookiePopup: {
-    title: "Cookie Policy",
-    text: "We use cookies to improve your experience on our website.",
-    readMoreHref: "/privacy-policy.html",
-    readMoreText: "Read More",
-  },
 };
+
+export const cookiePopup = {
+  title: "Cookie Policy",
+  text: "We use cookies to improve your experience on our website.",
+  readMoreHref: "/privacy-policy.html",
+  readMoreText: "Read More",
+  measurementId: process.env.GA_MEASUREMENT_ID,
+} as const;
