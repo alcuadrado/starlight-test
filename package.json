@@ -10,7 +10,7 @@
     "build": "astro build",
     "prebuild": "astro check",
     "preview": "astro preview",
-    "clean": "rm -rf dist .astro",
+    "clean": "rm -rf dist .astro .vercel",
     "astro": "astro",
     "lint": "prettier --check '{src/**,.}/*.{js,ts,md,json,mdx,astro}' && astro check",
     "lint:fix": "prettier --write '{src/**,.}/*.{js,ts,md,json,mdx,astro}' && astro check"
