@@ -1,15 +1,18 @@
 ---
 import Button from "../ui/Button.astro";
-
-const { content } = Astro.props;
+import { cookiePopup } from "../../config.js";
 ---
 
-<div class="cookie-popup hidden" id="cookie-popup">
-  <h3 class="title">{content.title}</h3>
+<div
+  class="cookie-popup hidden"
+  id="cookie-popup"
+  data-measurement-id={cookiePopup.measurementId}
+>
+  <h3 class="title">{cookiePopup.title}</h3>
   <p class="text">
-    {content.text}
-    <a href={content.readMoreHref} class="read-more-link"
-      >{content.readMoreText}</a
+    {cookiePopup.text}
+    <a href={cookiePopup.readMoreHref} class="read-more-link"
+      >{cookiePopup.readMoreText}</a
     >
   </p>
   <div class="buttons">
@@ -19,29 +22,88 @@ const { content } = Astro.props;
 </div>
 
 <script>
-  const COOKIE_CONSENT_KEY = "cookie-consent";
+  declare global {
+    interface Window {
+      __analyticsLoaded?: boolean;
+    }
+  }
+
+  const COOKIE_CONSENT_KEY = "cookie-consent" as const;
+  const CONSENT_ACCEPTED = "accepted" as const;
+  const CONSENT_REJECTED = "rejected" as const;
+
+  function loadAnalyticsPartytown(measurementId: string) {
+    if (window.__analyticsLoaded) return;
+    window.__analyticsLoaded = true;
+
+    const loader = document.createElement("script");
+    loader.type = "text/partytown";
+    loader.async = true;
+    loader.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.appendChild(loader);
+
+    const config = document.createElement("script");
+    config.type = "text/partytown";
+    config.textContent = `
+      // Worker-side stub so gtag exists even if loader hasn't executed yet.
+      self.dataLayer = self.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('js', new Date());
+      gtag('config', '${measurementId}', { anonymize_ip: true });
+      console.log('[Partytown] GA4 config queued');
+    `;
+    document.head.appendChild(config);
+
+    // Notify Partytown about newly added scripts
+    window.dispatchEvent(new CustomEvent("ptupdate"));
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("cookie-popup");
     const acceptButton = document.getElementById("cookie-accept");
     const rejectButton = document.getElementById("cookie-reject");
 
-    // Show popup if user hasn't made a choice
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    if (!consent) {
-      popup?.classList.remove("hidden");
+    if (!popup || !acceptButton || !rejectButton) {
+      console.error("Cookie popup and/or buttons not found");
+      return;
     }
 
-    const handleChoice = (accepted: boolean) => {
-      localStorage.setItem(
-        COOKIE_CONSENT_KEY,
-        accepted ? "accepted" : "rejected",
+    const measurementId = popup.dataset.measurementId;
+    if (measurementId === undefined) {
+      console.warn(
+        "No measurement ID found, so we don't display the cookie popup",
       );
-      popup?.classList.add("hidden");
+      return;
+    }
+
+    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+    if (consent) {
+      if (consent === CONSENT_ACCEPTED) {
+        loadAnalyticsPartytown(measurementId);
+      }
+
+      return;
+    }
+
+    const handleChoice = (consentResponse: string) => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, consentResponse);
+      popup.classList.add("hidden");
+
+      if (consentResponse === CONSENT_ACCEPTED) {
+        loadAnalyticsPartytown(measurementId);
+      }
     };
 
-    acceptButton?.addEventListener("click", () => handleChoice(true));
-    rejectButton?.addEventListener("click", () => handleChoice(false));
+    acceptButton.addEventListener("click", () =>
+      handleChoice(CONSENT_ACCEPTED),
+    );
+    rejectButton.addEventListener("click", () =>
+      handleChoice(CONSENT_REJECTED),
+    );
+
+    popup.classList.remove("hidden");
   });
 </script>
 
