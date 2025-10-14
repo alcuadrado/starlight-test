@@ -18,6 +18,10 @@ export interface LandingConfig {
     menu: Array<{
       label: string;
       url: string;
+      dropdown?: Array<{
+        label: string;
+        url: string;
+      }>;
     }>;
     socials: Array<{
       name: string;

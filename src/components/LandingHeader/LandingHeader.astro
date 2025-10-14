@@ -19,6 +19,17 @@ const { logo, menu, socials } = landing.header;
             <a href={item.url} class="main-menu-link">
               {item.label}
             </a>
+            {item.dropdown && (
+              <ul class="dropdown-menu">
+                {item.dropdown.map((dropdownItem) => (
+                  <li>
+                    <a href={dropdownItem.url} class="dropdown-link">
+                      {dropdownItem.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))
       }
@@ -217,10 +228,10 @@ const { logo, menu, socials } = landing.header;
       .main-menu-link
         color: var(--hh-violet500) !important
 
-    &.has-dropdown:hover .dropdown-menu
-      opacity: 1
-      visibility: visible
-      transform: translateX(-50%) translateY(0)
+      .dropdown-menu
+        opacity: 1
+        visibility: visible
+        transform: translateX(-50%) translateY(0)
 
   .main-menu-link
     border: none
@@ -246,45 +257,48 @@ const { logo, menu, socials } = landing.header;
       font-weight: 500
 
   .dropdown-menu
-    position: absolute
-    top: calc(100% + 1px)
-    left: 50%
-    transform: translateX(-50%) translateY(-10px)
-    width: 180px
-    box-shadow: 0px 0px 6px 0px rgba(210, 211, 213, 0.5)
-    background-color: var(--hh-gray100)
-    padding: 24px
-    display: flex
-    flex-direction: column
-    gap: 6px
-    list-style: none
-    opacity: 0
-    visibility: hidden
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s
-    z-index: 1
+    display: none
+
     +dark
       background-color: var(--hh-gray950)
       box-shadow: 0px 0px 6px 0px rgba(74, 77, 84, 0.5)
 
-    &::before
-      content: ""
+    +laptop
+      display: flex
+      flex-direction: column
+      gap: 6px
+      list-style: none
       position: absolute
-      left: 0
-      bottom: 100%
-      width: 100%
-      height: 10px
-
-    &::after
-      z-index: 1
-      position: absolute
-      top: -6px
+      top: calc(100% + 1px)
       left: 50%
-      transform: translateX(-50%) rotate(45deg)
-      transform-origin: center
-      content: " "
-      width: 16px
-      height: 16px
-      background-color: inherit
+      transform: translateX(-50%) translateY(-10px)
+      width: 180px
+      box-shadow: 0px 0px 6px 0px rgba(210, 211, 213, 0.5)
+      background-color: var(--hh-gray100)
+      padding: 24px
+      opacity: 0
+      visibility: hidden
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s
+      z-index: 1
+      &::before
+        content: ""
+        position: absolute
+        left: 0
+        bottom: 100%
+        width: 100%
+        height: 10px
+
+      &::after
+        z-index: 1
+        position: absolute
+        top: -6px
+        left: 50%
+        transform: translateX(-50%) rotate(45deg)
+        transform-origin: center
+        content: " "
+        width: 16px
+        height: 16px
+        background-color: inherit
 
   .dropdown-link
     display: block
