@@ -1,6 +1,8 @@
 ---
-title: Migrate to Hardhat 3 from Hardhat 2
-description: Migrate to Hardhat 3 from Hardhat 2
+title: Migrate from Hardhat 2
+description: How to migrate from Hardhat 2 to Hardhat 3
+sidebar:
+  label: Overview
 ---
 
-Example
+placeholder

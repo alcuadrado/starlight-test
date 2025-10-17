@@ -1,4 +1,8 @@
-import type { CookiePopupConfig, LandingConfig } from "./configTypes";
+import type {
+  CookiePopupConfig,
+  LandingConfig,
+  PluginsConfig,
+} from "./configTypes";
 
 export const landing: LandingConfig = {
   head: {
@@ -212,4 +216,11 @@ export const cookiePopup: CookiePopupConfig = {
   readMoreHref: "/privacy-policy.html",
   readMoreText: "Read More",
   measurementId: import.meta.env.GA_MEASUREMENT_ID,
+};
+
+export const pluginsConfig: PluginsConfig = {
+  officialPluginsNpmTag: "latest",
+  officialPluginsAuthor: "Nomic Foundation",
+  officialPluginsAuthorUrl: "https://x.com/NomicFoundation",
+  maliciousPluginReportingEmail: "security@nomicfoundation.com",
 };

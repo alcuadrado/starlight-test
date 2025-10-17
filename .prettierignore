@@ -4,4 +4,6 @@ dist/
 .vercel/
 pnpm-lock.yaml
 package-lock.json
-
+/src/content/docs/docs/reference/errors.md
+/scripts/manually-fixed.md
+/scripts/manually-fixed.ignore.md
