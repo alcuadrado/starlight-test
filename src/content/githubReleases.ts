@@ -20,7 +20,7 @@ const githubReleaseCollectionSchema = z.object({
   published_at: z.string(),
 });
 
-export const githubReleasesCollection = defineCollection({
+export const githubReleases = defineCollection({
   loader: async () => {
     const endpoint =
       "https://api.github.com/repos/NomicFoundation/hardhat/releases";

@@ -103,3 +103,10 @@ export interface CookiePopupConfig {
   readMoreText: string;
   measurementId: string;
 }
+
+export interface PluginsConfig {
+  officialPluginsNpmTag: string;
+  officialPluginsAuthor: string;
+  officialPluginsAuthorUrl: string;
+  maliciousPluginReportingEmail: string;
+}

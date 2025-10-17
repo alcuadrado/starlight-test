@@ -1,4 +1,10 @@
-@import url(./landing-vars.css);
+@import url(./colors.css);
+
+:root {
+  --font-base:
+    "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: "Source Code Pro", "Monaco", "Courier New", monospace;
+}
 
 /* Fonts */
 @font-face {

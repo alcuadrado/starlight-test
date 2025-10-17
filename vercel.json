@@ -19,6 +19,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/HHE:path",
+      "destination": "/hhe:path",
+      "permanent": false
+    },
+    {
+      "source": "/HH:path",
+      "destination": "https://v2.hardhat.org/hh:path",
+      "permanent": false
+    },
+    {
+      "source": "/hh:path",
+      "destination": "https://v2.hardhat.org/hh:path",
+      "permanent": false
+    },
+    {
       "source": "/:path*/index.html",
       "destination": "/:path*",
       "permanent": false

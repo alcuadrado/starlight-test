@@ -9,7 +9,7 @@ const blogpostsCollectionSchema = z.object({
   feature_image: z.string().optional(),
 });
 
-export const blogpostsCollection = defineCollection({
+export const blogposts = defineCollection({
   loader: async () => {
     const API_KEY = import.meta.env.GHOST_CMS_API_KEY;
     const CONTENT_URL = import.meta.env.GHOST_CMS_CONTENT_URL;
