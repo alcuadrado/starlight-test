@@ -1,6 +1,6 @@
 import { writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
-import { getErrors } from "../src/data/hardhat-errors.ts";
+import { getErrors } from "../src/content/hardhat-errors.ts";
 
 const ERROR_LIST_MD_PATH = path.resolve(
   import.meta.dirname,

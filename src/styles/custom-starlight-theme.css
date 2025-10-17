@@ -1,4 +1,4 @@
-@import url(./landing-vars.css);
+@import url(./colors.css);
 
 :root[data-theme='dark'] {
   --sl-color-accent-low:  var(--hh-yellow1150);  /* subtle accent bg (chips, callouts) */

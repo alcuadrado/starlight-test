@@ -190,12 +190,12 @@ export default defineConfig({
             },
           },
         ),
-        starlightLinksValidator(),
+        starlightLinksValidator({ exclude: Object.keys(redirects) }),
       ],
       customCss: ["./src/styles/custom-starlight-theme.css"],
       components: {
-        Sidebar: "./src/components/Sidebar.astro",
-        Header: "./src/components/Header.astro",
+        Sidebar: "./src/components/starlight-overrides/Sidebar.astro",
+        Header: "./src/components/starlight-overrides/Header.astro",
       },
     }),
     partytown({

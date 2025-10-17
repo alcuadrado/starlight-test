@@ -51,9 +51,4 @@
   /* Shadows */
   --hh-shadow-light: rgba(210, 211, 213, 0.5);
   --hh-shadow-dark: rgba(74, 77, 84, 0.5);
-
-  /* Fonts */
-  --font-base:
-    "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-code: "Source Code Pro", "Monaco", "Courier New", monospace;
 }

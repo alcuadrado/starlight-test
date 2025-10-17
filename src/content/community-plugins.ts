@@ -47,7 +47,7 @@ async function getLastMonthDownloads(pluginName: string) {
   return json.downloads;
 }
 
-export const communityPluginsCollection = defineCollection({
+export const communityPlugins = defineCollection({
   loader: async () => {
     const pluginsFile = communityPluginsJsonSchema.parse(communityPluginsJson);
 

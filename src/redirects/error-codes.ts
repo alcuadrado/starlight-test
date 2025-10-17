@@ -1,6 +1,6 @@
 import type { AstroConfig } from "astro";
 
-import { getErrors } from "../data/hardhat-errors";
+import { getErrors } from "../content/hardhat-errors";
 
 const errors = await getErrors();
 

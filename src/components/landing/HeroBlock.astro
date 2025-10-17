@@ -1,12 +1,12 @@
 ---
 import Button from "../ui/Button.astro";
-import Container from "../Container/Container.astro";
-import heroGraphicDesktop from "../../assets/hero/hero.webp";
-import heroGraphicTablet from "../../assets/hero/heroTablet.webp";
-import heroGraphicMobile from "../../assets/hero/heroMobile.webp";
-import heroGraphicDesktopDark from "../../assets/hero/heroDark.webp";
-import heroGraphicDarkTablet from "../../assets/hero/heroDarkTablet.webp";
-import heroGraphicDarkMobile from "../../assets/hero/heroDarkMobile.webp";
+import Container from "./Container.astro";
+import heroGraphicDesktop from "../../assets/landing/hero/hero.webp";
+import heroGraphicTablet from "../../assets/landing/hero/heroTablet.webp";
+import heroGraphicMobile from "../../assets/landing/hero/heroMobile.webp";
+import heroGraphicDesktopDark from "../../assets/landing/hero/heroDark.webp";
+import heroGraphicDarkTablet from "../../assets/landing/hero/heroDarkTablet.webp";
+import heroGraphicDarkMobile from "../../assets/landing/hero/heroDarkMobile.webp";
 
 import { landing } from "../../config";
 ---
@@ -82,9 +82,9 @@ import { landing } from "../../config";
       padding: 102px 0 148px
 
     &::before
-      background-image: url('../../assets/hero/hero-texture.svg')
+      background-image: url('../../assets/landing/hero/hero-texture.svg')
       +dark
-        background-image: url('../../assets/hero/heroDark-texture.svg')
+        background-image: url('../../assets/landing/hero/heroDark-texture.svg')
 
       +tablet
         content: ""

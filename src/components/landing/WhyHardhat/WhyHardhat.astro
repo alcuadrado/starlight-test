@@ -1,7 +1,7 @@
 ---
+import { landing } from "../../../config";
+import Container from "../Container.astro";
 import FeatureCard from "./FeatureCard.astro";
-import { landing } from "../../config";
-import Container from "../Container/Container.astro";
 ---
 
 <section class="section">
@@ -171,7 +171,7 @@ import Container from "../Container/Container.astro";
 </script>
 
 <style lang="sass">
-  @use '../../styles/mixins' as *
+  @use '../../../styles/mixins' as *
 
   .section
     width: 100%
@@ -292,14 +292,14 @@ import Container from "../Container/Container.astro";
     order: -1
     grid-column: 2/3
     grid-row: 1/2
-    background-image: url('../../assets/why-we/gridMobile.svg')
+    background-image: url('../../../assets/landing/why-we/gridMobile.svg')
     background-size: cover
     background-position: center
     background-repeat: no-repeat
     pointer-events: none
 
     +dark
-      background-image: url('../../assets/why-we/gridDarkMobile.svg')
+      background-image: url('../../../assets/landing/why-we/gridDarkMobile.svg')
 
     +tablet
       display: block
@@ -307,28 +307,28 @@ import Container from "../Container/Container.astro";
       width: 335px
       height: 302px
       top: calc(50vh - (302px / 2) + 60px)
-      background-image: url('../../assets/why-we/gridTablet.svg')
+      background-image: url('../../../assets/landing/why-we/gridTablet.svg')
 
       +dark
-        background-image: url('../../assets/why-we/gridDarkTablet.svg')
+        background-image: url('../../../assets/landing/why-we/gridDarkTablet.svg')
 
     +laptop
       width: 528px
       height: 480px
       top: calc(50vh - (480px / 2) + 70px)
-      background-image: url('../../assets/why-we/gridLaptop.svg')
+      background-image: url('../../../assets/landing/why-we/gridLaptop.svg')
 
       +dark
-        background-image: url('../../assets/why-we/gridDarkLaptop.svg')
+        background-image: url('../../../assets/landing/why-we/gridDarkLaptop.svg')
 
     +desktop
       height: 528px
       width: 576px
       top: calc(50vh - (528px / 2) + 70px)
-      background-image: url('../../assets/why-we/gridDesktop.svg')
+      background-image: url('../../../assets/landing/why-we/gridDesktop.svg')
 
       +dark
-        background-image: url('../../assets/why-we/gridDarkDesktop.svg')
+        background-image: url('../../../assets/landing/why-we/gridDarkDesktop.svg')
 
     .image-wrapper-3
       img

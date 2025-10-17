@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 
-import HardhatNewsImage from "../../assets/what-is-new/Hardhat-news.svg";
+import HardhatNewsImage from "../../assets/landing/what-is-new/Hardhat-news.svg";
 import { landing } from "../../config";
 import { formatSmartDate } from "../../utils/formatSmartDate";
-import Container from "../Container/Container.astro";
+import Container from "./Container.astro";
 
 const githubReleases = await getCollection("githubReleases");
 ---

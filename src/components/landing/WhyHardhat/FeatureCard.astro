@@ -1,6 +1,6 @@
 ---
-import type { LandingConfig } from "../../configTypes";
-import Button from "../ui/Button.astro";
+import type { LandingConfig } from "../../../configTypes";
+import Button from "../../ui/Button.astro";
 import CAIcon from "./icons/CAIcon.astro";
 import CCIcon from "./icons/CCIcon.astro";
 import CCReverseIcon from "./icons/CCReverseIcon.astro";
@@ -95,7 +95,7 @@ const Icon2 = iconMap[articleTwo.icon as keyof typeof iconMap];
 </div>
 
 <style lang="sass">
-  @use '../../styles/mixins' as *
+  @use '../../../styles/mixins' as *
 
   .feature-card
     position: relative
@@ -150,13 +150,13 @@ const Icon2 = iconMap[articleTwo.icon as keyof typeof iconMap];
     align-items: center
     justify-content: center
     order: -1
-    background-image: url(../../assets/why-we/gridMobile.svg)
+    background-image: url(../../../assets/landing/why-we/gridMobile.svg)
     background-size: contain
     background-position: center
     background-repeat: no-repeat
 
     +dark
-      background-image: url(../../assets/why-we/gridDarkMobile.svg)
+      background-image: url(../../../assets/landing/why-we/gridDarkMobile.svg)
 
     +tablet
       order: 1

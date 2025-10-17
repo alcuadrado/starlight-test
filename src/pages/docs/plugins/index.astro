@@ -3,7 +3,7 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
 import { getCollection } from "astro:content";
 
-import Plugin from "../../../components/Plugin.astro";
+import Plugin from "../../../components/custom-pages/Plugin.astro";
 import { pluginsConfig } from "../../../config";
 
 const officialPlugins = await getCollection("officialPlugins");
